@@ -7,9 +7,26 @@
 
 typedef int (*HTTPServerConnection_OnRequest)(void* _Context);
 
+typedef enum
+{
+	HTTPServerConnection_State_Init,
+	HTTPServerConnection_State_Reading,
+	HTTPServerConnection_State_Parsing,
+	HTTPServerConnection_State_Timeout,
+	HTTPServerConnection_State_Done,
+	HTTPServerConnection_State_Dispose,
+	HTTPServerConnection_State_Failed
+} HTTPServerConnection_State;
+
+#define READBUFFER_SIZE 4096
+#define HTTPSERVER_TIMEOUT_MS 1000
+
 typedef struct
 {
 	TCPClient tcpClient;
+	char readBuffer[READBUFFER_SIZE];
+	int bytesRead;
+	uint64_t startTime;
 
 	void* context;
 	HTTPServerConnection_OnRequest onRequest;
@@ -18,7 +35,7 @@ typedef struct
 	char* url;
 
 	smw_task* task;
-
+	HTTPServerConnection_State state;
 } HTTPServerConnection;
 
 
