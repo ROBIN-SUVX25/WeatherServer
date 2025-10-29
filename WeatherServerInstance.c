@@ -39,8 +39,12 @@ int WeatherServerInstance_InitiatePtr(HTTPServerConnection* _Connection, Weather
 
 int WeatherServerInstance_OnRequest(void* _Context)
 {
+	WeatherServerInstance* _Instance = (WeatherServerInstance*)_Context;
+	HTTPServerConnection* _Connection = _Instance->connection;
+
 	printf("WeatherServerInstance_OnRequest\n");
-	
+	printf("Method: %s\n", _Connection->method);
+	printf("URL: %s\n", _Connection->url);
 	return 0;
 }
 

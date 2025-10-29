@@ -16,6 +16,7 @@ typedef struct
 
 	char* method;
 	char* url;
+	int requestReceived;
 
 	smw_task* task;
 

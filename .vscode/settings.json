@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "tcpclient.h": "c",
+        "types.h": "c",
+        "fcntl.h": "c",
+        "httpserverconnection.h": "c"
+    }
+}
