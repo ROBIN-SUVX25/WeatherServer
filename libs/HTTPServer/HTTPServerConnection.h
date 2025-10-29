@@ -4,6 +4,7 @@
 
 #include "smw.h"
 #include "../TCPClient.h"
+#include <stdint.h>
 
 typedef int (*HTTPServerConnection_OnRequest)(void* _Context);
 
@@ -16,6 +17,11 @@ typedef struct
 
 	char* method;
 	char* url;
+
+	uint8_t* buffer;
+	size_t buffer_size;
+
+	uint8_t* headers;
 
 	smw_task* task;
 
