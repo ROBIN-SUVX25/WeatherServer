@@ -21,6 +21,24 @@ typedef struct
 
 } HTTPServerConnection;
 
+typedef struct
+{
+	char key[256];
+	char value[256];
+	
+} HeaderStruct;
+
+typedef struct
+{
+	char* _Method;
+	char* _URL;
+	HeaderStruct headers[32];
+
+
+} HTTPRequest;
+
+
+
 
 int HTTPServerConnection_Initiate(HTTPServerConnection* _Connection, int _FD);
 int HTTPServerConnection_InitiatePtr(int _FD, HTTPServerConnection** _ConnectionPtr);

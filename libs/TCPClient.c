@@ -62,7 +62,7 @@ int TCPClient_Write(TCPClient* c, const uint8_t* buf, int len)
 int TCPClient_Read(TCPClient* c, uint8_t* buf, int len)
 {
     return recv(c->fd, buf, len, MSG_DONTWAIT); // icke-blockerande läsning
-}
+}   
 
 void TCPClient_Disconnect(TCPClient* c)
 {
