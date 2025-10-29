@@ -1,18 +1,14 @@
+#ifndef __UTILS_H_
+#define __UTILS_H_
+
+#define _POSIX_C_SOURCE 200809L
 #include <time.h>
+#include <stdint.h>
+#include <string.h>
+#include <stdlib.h>
 
-uint64_t SystemMonotonicMS()
-{
-	long            ms;
-	time_t          s;
+uint64_t SystemMonotonicMS();
 
-	struct timespec spec;
-	clock_gettime(CLOCK_MONOTONIC, &spec);
-	s  = spec.tv_sec;
-	ms = (spec.tv_nsec / 1000000);
+char* utils_strdup(const char* str);
 
-	uint64_t result = s;
-	result *= 1000;
-	result += ms;
-
-	return result;
-}
+#endif
