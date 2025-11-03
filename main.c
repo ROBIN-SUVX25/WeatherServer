@@ -1,13 +1,9 @@
 #include <stdio.h>
 
-
 #include "smw.h"
 #include "utils.h"
 
 #include "WeatherServer.h"
-
-
-
 
 int main()
 {
@@ -18,7 +14,6 @@ int main()
 
 	while(1)
 	{
-		
 		smw_work(SystemMonotonicMS());
 	}
 
