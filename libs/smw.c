@@ -55,6 +55,7 @@ void smw_work(uint64_t _MonTime)
 	int i;
 	for(i = 0; i < smw_max_tasks; i++)
 	{
+		// TODO: make linked list
 		if(g_smw.tasks[i].callback != NULL)
 			g_smw.tasks[i].callback(g_smw.tasks[i].context, _MonTime);
 

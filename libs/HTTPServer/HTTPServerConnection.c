@@ -116,6 +116,7 @@ void HTTPServerConnection_TaskWork(void* _Context, uint64_t _MonTime)
 			{
 				_Connection->onRequest(_Connection->context);
 			}
+			// Ska den verkligen disposea här?
 			_Connection->state = HTTPServerConnection_State_Dispose;
 			break;
 		}
