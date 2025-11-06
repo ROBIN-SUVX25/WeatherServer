@@ -57,7 +57,7 @@ void smw_work(uint64_t _MonTime)
 	{
 		if(g_smw.tasks[i].callback != NULL)
 			g_smw.tasks[i].callback(g_smw.tasks[i].context, _MonTime);
-
+		
 	}
 }
 

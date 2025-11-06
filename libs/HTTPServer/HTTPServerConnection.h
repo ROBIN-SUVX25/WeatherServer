@@ -16,6 +16,7 @@ typedef struct
 
 	char* method;
 	char* url;
+	uint8_t* body;
 
 	smw_task* task;
 

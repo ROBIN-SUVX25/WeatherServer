@@ -8,9 +8,10 @@ int HTTPServer_OnAccept(int _FD, void* _Context);
 
 //----------------------------------------------------
 
-int HTTPServer_Initiate(HTTPServer* _Server, HTTPServer_OnConnection _OnConnection)
+int HTTPServer_Initiate(HTTPServer* _Server, HTTPServer_OnConnection _OnConnection, void* _Context)
 {
 	_Server->onConnection = _OnConnection;
+	_Server->context = _Context;
 
 	TCPServer_Initiate(&_Server->tcpServer, "8080", HTTPServer_OnAccept, _Server);
 	

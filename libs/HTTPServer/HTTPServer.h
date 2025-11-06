@@ -11,6 +11,7 @@ typedef int (*HTTPServer_OnConnection)(void* _Context, HTTPServerConnection* _Co
 typedef struct
 {
 	HTTPServer_OnConnection onConnection;
+	void* context;
 
 	TCPServer tcpServer;
 	smw_task* task;
@@ -18,7 +19,7 @@ typedef struct
 } HTTPServer;
 
 
-int HTTPServer_Initiate(HTTPServer* _Server, HTTPServer_OnConnection _OnConnection);
+int HTTPServer_Initiate(HTTPServer* _Server, HTTPServer_OnConnection _OnConnection, void* _Context);
 int HTTPServer_InitiatePtr(HTTPServer_OnConnection _OnConnection, HTTPServer** _ServerPtr);
 
 
