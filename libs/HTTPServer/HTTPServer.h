@@ -20,7 +20,7 @@ typedef struct
 
 
 int HTTPServer_Initiate(HTTPServer* _Server, HTTPServer_OnConnection _OnConnection, void* _Context);
-int HTTPServer_InitiatePtr(HTTPServer_OnConnection _OnConnection, HTTPServer** _ServerPtr);
+int HTTPServer_InitiatePtr(HTTPServer_OnConnection _OnConnection, void* _Context, HTTPServer** _ServerPtr);
 
 
 void HTTPServer_Dispose(HTTPServer* _Server);

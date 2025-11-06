@@ -20,7 +20,7 @@ int HTTPServer_Initiate(HTTPServer* _Server, HTTPServer_OnConnection _OnConnecti
 	return 0;
 }
 
-int HTTPServer_InitiatePtr(HTTPServer_OnConnection _OnConnection, HTTPServer** _ServerPtr)
+int HTTPServer_InitiatePtr(HTTPServer_OnConnection _OnConnection, void* _Context, HTTPServer** _ServerPtr)
 {
 	if(_ServerPtr == NULL)
 		return -1;
@@ -29,7 +29,7 @@ int HTTPServer_InitiatePtr(HTTPServer_OnConnection _OnConnection, HTTPServer** _
 	if(_Server == NULL)
 		return -2;
 
-	int result = HTTPServer_Initiate(_Server, _OnConnection);
+	int result = HTTPServer_Initiate(_Server, _OnConnection, _Context);
 	if(result != 0)
 	{
 		free(_Server);
@@ -52,6 +52,7 @@ int HTTPServer_OnAccept(int _FD, void* _Context)
 		printf("HTTPServer_OnAccept: Failed to initiate connection\n");
 		return -1;
 	}
+
 
 	_Server->onConnection(_Server, connection);
 	

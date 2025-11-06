@@ -43,7 +43,7 @@ int WeatherServer_InitiatePtr(WeatherServer** _ServerPtr)
 int WeatherServer_OnHTTPConnection(void* _Context, HTTPServerConnection* _Connection)
 {
 	WeatherServer* _Server = (WeatherServer*)_Context;
-
+	
 	WeatherServerInstance* instance = NULL;
 	int result = WeatherServerInstance_InitiatePtr(_Connection, &instance);
 	if(result != 0)

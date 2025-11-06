@@ -5,6 +5,20 @@
 #include "smw.h"
 #include "../TCPClient.h"
 
+#define HTTPServer_MaxLineLength 1024
+#define HTTPServer_BufferSize 128
+
+
+typedef enum
+{
+	HTTPServerConnection_State_Init,
+	HTTPServerConnection_State_ReadFirstLine,
+	HTTPServerConnection_State_ReadHeaders,
+	HTTPServerConnection_State_InvalidRequest
+
+} HTTPServerConnection_State;
+
+
 typedef int (*HTTPServerConnection_OnRequest)(void* _Context);
 
 typedef struct
@@ -16,7 +30,13 @@ typedef struct
 
 	char* method;
 	char* url;
+	char* version;
 	uint8_t* body;
+
+	HTTPServerConnection_State state;
+
+	uint8_t lineBuffer[HTTPServer_MaxLineLength];
+	int lineLength;
 
 	smw_task* task;
 
